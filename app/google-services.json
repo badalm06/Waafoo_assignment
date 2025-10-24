@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "731015084751",
+    "project_id": "assignment-waafoo",
+    "storage_bucket": "assignment-waafoo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731015084751:android:aa3c7a945ae0ea7b4ad5ba",
+        "android_client_info": {
+          "package_name": "com.example.assignment_waafoo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1WU_9ZBTYzwpm749AH6jXvZqOjn_8NwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
