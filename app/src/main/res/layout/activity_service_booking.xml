@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp"
+        tools:context=".ServiceBookingActivity">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/headerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/abyssinica_sil"
+            android:text="Book Service"
+            android:textColor="@color/black"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Purifier Info Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/purifierInfoCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/gray"
+            android:elevation="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerText">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/purifierModelDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Purifier: Aquaguard RO"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/nextServiceDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Next Service: 23/01/2026"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Booking Form Section -->
+        <TextView
+            android:id="@+id/formLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Fill Booking Details"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/purifierInfoCard" />
+
+        <EditText
+            android:id="@+id/customerName"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edittextshape"
+            android:backgroundTint="@color/gray"
+            android:elevation="6dp"
+            android:hint="Your Name"
+            android:inputType="text"
+            android:paddingStart="18dp"
+            android:shadowColor="@color/black"
+            android:shadowDy="5"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/formLabel" />
+
+        <EditText
+            android:id="@+id/phoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittextshape"
+            android:backgroundTint="@color/gray"
+            android:elevation="6dp"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:paddingStart="18dp"
+            android:shadowColor="@color/black"
+            android:shadowDy="5"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/customerName"
+            app:layout_constraintStart_toStartOf="@+id/customerName"
+            app:layout_constraintTop_toBottomOf="@+id/customerName" />
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittextshape"
+            android:backgroundTint="@color/gray"
+            android:elevation="6dp"
+            android:hint="Service Address"
+            android:inputType="text"
+            android:paddingStart="18dp"
+            android:shadowColor="@color/black"
+            android:shadowDy="5"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/phoneNumber"
+            app:layout_constraintStart_toStartOf="@+id/phoneNumber"
+            app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+
+        <EditText
+            android:id="@+id/preferredDate"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittextshape"
+            android:backgroundTint="@color/gray"
+            android:clickable="true"
+            android:elevation="6dp"
+            android:focusable="false"
+            android:hint="Preferred Date (DD/MM/YYYY)"
+            android:inputType="none"
+            android:paddingStart="18dp"
+            android:shadowColor="@color/black"
+            android:shadowDy="5"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/address"
+            app:layout_constraintStart_toStartOf="@+id/address"
+            app:layout_constraintTop_toBottomOf="@+id/address" />
+
+        <EditText
+            android:id="@+id/issueDescription"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittextshape"
+            android:backgroundTint="@color/gray"
+            android:elevation="6dp"
+            android:gravity="top|start"
+            android:hint="Describe the issue (optional)"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:paddingStart="18dp"
+            android:paddingTop="18dp"
+            android:shadowColor="@color/black"
+            android:shadowDy="5"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/preferredDate"
+            app:layout_constraintStart_toStartOf="@+id/preferredDate"
+            app:layout_constraintTop_toBottomOf="@+id/preferredDate" />
+
+        <!-- Submit Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submitBookingButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="36dp"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="@color/yellow"
+            android:fontFamily="sans-serif-medium"
+            android:text="Submit Booking Request"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/issueDescription" />
+
+        <!-- Back to Dashboard Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/backButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="36dp"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="@color/gray"
+            android:fontFamily="sans-serif-medium"
+            android:text="← Back to Dashboard"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/submitBookingButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

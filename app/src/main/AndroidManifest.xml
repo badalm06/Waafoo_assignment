@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Assignment_Waafoo">
         <activity
+            android:name=".ServiceBookingActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignupActivity"
             android:exported="false" />
         <activity
@@ -28,8 +31,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
