@@ -69,17 +69,14 @@ class MainActivity : AppCompatActivity() {
             database.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
-                        // Get user data
                         val username = snapshot.child("username").getValue(String::class.java) ?: "User"
                         val purifierType = snapshot.child("purifierType").getValue(String::class.java) ?: "N/A"
                         val nextServiceDate = snapshot.child("nextServiceDate").getValue(String::class.java) ?: "N/A"
 
-                        // Update UI
                         binding.usernameDisplay.text = username
                         binding.purifierModel.text = "Model: $purifierType"
                         binding.nextServiceDate.text = "Date: $nextServiceDate"
 
-                        // Calculate days remaining and update status
                         calculateServiceStatus(nextServiceDate)
                     } else {
                         Toast.makeText(this@MainActivity, "User data not found", Toast.LENGTH_SHORT).show()
@@ -104,11 +101,9 @@ class MainActivity : AppCompatActivity() {
             val currentDate = Calendar.getInstance().time
 
             if (serviceDate != null) {
-                // Calculate difference in days
                 val diffInMillis = serviceDate.time - currentDate.time
                 val daysRemaining = (diffInMillis / (1000 * 60 * 60 * 24)).toInt()
 
-                // Update status based on days remaining
                 when {
                     daysRemaining > 7 -> {
                         binding.daysRemaining.text = "🟢 $daysRemaining days remaining"

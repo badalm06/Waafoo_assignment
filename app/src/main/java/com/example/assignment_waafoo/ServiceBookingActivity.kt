@@ -94,7 +94,6 @@ class ServiceBookingActivity : AppCompatActivity() {
             day
         )
 
-        // Set minimum date to today (can't book service in the past)
         datePickerDialog.datePicker.minDate = calendar.timeInMillis
         datePickerDialog.show()
     }
@@ -106,7 +105,6 @@ class ServiceBookingActivity : AppCompatActivity() {
         val preferredDate = selectedDate
         val issue = binding.issueDescription.text.toString().trim()
 
-        // Validation
         if (name.isEmpty()) {
             binding.customerName.error = "Name is required"
             binding.customerName.requestFocus()
@@ -136,7 +134,6 @@ class ServiceBookingActivity : AppCompatActivity() {
             return
         }
 
-        // Submit booking to Firebase
         submitBooking(name, phone, address, preferredDate, issue)
     }
 
@@ -146,13 +143,10 @@ class ServiceBookingActivity : AppCompatActivity() {
         if (userId != null) {
             val database = FirebaseDatabase.getInstance().getReference("bookings")
 
-            // Generate unique booking ID
             val bookingId = database.push().key ?: return
 
-            // Get current timestamp
             val timestamp = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(Date())
 
-            // Create booking data
             val bookingData = mapOf(
                 "bookingId" to bookingId,
                 "userId" to userId,
@@ -165,10 +159,9 @@ class ServiceBookingActivity : AppCompatActivity() {
                 "timestamp" to timestamp
             )
 
-            // Save to Firebase
             database.child(bookingId).setValue(bookingData)
                 .addOnSuccessListener {
-                    // Show confirmation dialog
+
                     showConfirmationDialog(bookingId, preferredDate)
                 }
                 .addOnFailureListener { e ->
@@ -195,7 +188,7 @@ class ServiceBookingActivity : AppCompatActivity() {
         )
         builder.setPositiveButton("OK") { dialog, _ ->
             dialog.dismiss()
-            finish() // Return to dashboard
+            finish()
         }
         builder.setCancelable(false)
         builder.show()
