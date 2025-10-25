@@ -33,7 +33,6 @@ class SignupActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        // Date Picker for Last Service Date
         binding.lastServiceDate.setOnClickListener {
             showDatePicker()
         }
@@ -43,7 +42,6 @@ class SignupActivity : AppCompatActivity() {
         }
 
         binding.registerButton.setOnClickListener {
-            // Get text from edit text fields
             val email = binding.email.text.toString().trim()
             val username = binding.userName.text.toString().trim()
             val purifierType = binding.purifierType.text.toString().trim()
@@ -51,7 +49,6 @@ class SignupActivity : AppCompatActivity() {
             val password = binding.password.text.toString().trim()
             val repeatPassword = binding.repeatPassword.text.toString().trim()
 
-            // Validation
             if (email.isEmpty() || username.isEmpty() || purifierType.isEmpty() ||
                 lastServiceDate.isEmpty() || password.isEmpty() || repeatPassword.isEmpty()) {
                 Toast.makeText(this, "Please fill all the Details", Toast.LENGTH_SHORT).show()
@@ -60,17 +57,14 @@ class SignupActivity : AppCompatActivity() {
             } else if (password.length < 6) {
                 Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show()
             } else {
-                // Create user with Firebase Auth
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             val user = auth.currentUser
                             val database = FirebaseDatabase.getInstance().getReference("users")
 
-                            // Calculate next service date (90 days from last service)
                             val nextServiceDate = calculateNextServiceDate(lastServiceDate)
 
-                            // Create user data map
                             val userData = mapOf(
                                 "email" to email,
                                 "username" to username,
@@ -79,7 +73,6 @@ class SignupActivity : AppCompatActivity() {
                                 "nextServiceDate" to nextServiceDate
                             )
 
-                            // Store data in Firebase
                             user?.let {
                                 database.child(it.uid).setValue(userData)
                                     .addOnSuccessListener {
@@ -108,7 +101,6 @@ class SignupActivity : AppCompatActivity() {
         val datePickerDialog = DatePickerDialog(
             this,
             { _, selectedYear, selectedMonth, selectedDay ->
-                // Format selected date as DD/MM/YYYY
                 val formattedDate = String.format("%02d/%02d/%04d", selectedDay, selectedMonth + 1, selectedYear)
                 selectedLastServiceDate = formattedDate
                 binding.lastServiceDate.setText(formattedDate)
@@ -118,7 +110,6 @@ class SignupActivity : AppCompatActivity() {
             day
         )
 
-        // Set maximum date to today (can't select future dates for last service)
         datePickerDialog.datePicker.maxDate = calendar.timeInMillis
         datePickerDialog.show()
     }
@@ -130,7 +121,6 @@ class SignupActivity : AppCompatActivity() {
             val calendar = Calendar.getInstance()
             calendar.time = date!!
 
-            // Add 90 days for next service
             calendar.add(Calendar.DAY_OF_YEAR, 90)
 
             sdf.format(calendar.time)
