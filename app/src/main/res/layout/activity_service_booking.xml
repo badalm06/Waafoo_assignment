@@ -35,10 +35,10 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="24dp"
             android:layout_marginRight="20dp"
-            android:background="@color/gray"
+            android:background="@color/white"
             android:elevation="8dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
+            app:cardElevation="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/headerText">
@@ -47,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:background="@color/white"
                 android:padding="16dp">
 
                 <TextView
